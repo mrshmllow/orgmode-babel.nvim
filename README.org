@@ -1,0 +1,131 @@
+* orgmode-babel.nvim
+
+An experimental plugin that evaluates and tangles code blocks in
+[[https://github.com/nvim-orgmode/orgmode][nvim-orgmode]] using
+[[https://orgmode.org/worg/org-contrib/babel/][babel]] itself.
+
+It uses ~emacs~ under the hood for perfect compatibility, but does not require
+you to add anything extra to your ~init.el~.
+
+[[https://github.com/mrshmllow/BetterRecipeBook/assets/40532058/b1ca7384-4bb3-47d8-9148-b85f3a2ea54a][Demonstration]]
+
+** Requirements
+
+- [[https://github.com/nvim-orgmode/orgmode][nvim-orgmode]]
+- [[https://github.com/nvim-treesitter/nvim-treesitter][nvim-treesitter]]
+- A working ~emacs~ installation (does not require configuration)
+
+** Setup
+
+*** lazy.nvim
+
+#+begin_src lua
+{
+  "mrshmllow/orgmode-babel.nvim",
+  dependencies = {
+    "nvim-orgmode/orgmode",
+    "nvim-treesitter/nvim-treesitter"
+  },
+  cmd = { "OrgExecute", "OrgTangle" },
+  opts = {
+    -- by default, none are enabled
+    langs = { "python", "lua", ... }
+  }
+},
+#+end_src
+
+** Usage
+
+All commands accept a ~!~ to skip confirmation.
+
+*** ~:OrgExecute~
+
+See [[https://orgmode.org/manual/Working-with-Source-Code.html][Working with
+    Source Code]] in the org manual.
+
+#+begin_src
+:OrgE[xecute]
+#+end_src
+
+Evaluates every block in buffer.
+
+#+begin_src
+:{range}OrgE[xecute]
+#+end_src
+
+Evaluate every block in range.
+
+#+begin_src
+:OrgE[xecute] [name]
+#+end_src
+
+Evaluate ~[name]~ block.
+
+*** ~:OrgTangle~
+
+See [[https://orgmode.org/manual/Extracting-Source-Code.html][Extracting Source
+    Code]] in the org manual.
+
+#+begin_src
+:OrgT[angle]
+#+end_src
+
+Tangles whole file.
+
+#+begin_src
+:{range}OrgT[angle]
+#+end_src
+
+Tangles all blocks in range. If the range is NOT ~%~, the tangled file will
+likely only contain the contents of the last block, which is expected
+behaviour.
+
+#+begin_src
+:OrgT[angle] [name]
+#+end_src
+
+Tangles ~[name]~ block.
+
+** Advanced Configuration
+*** Adding extra org-mode languages
+ 
+Your emacs ~init.el~ will be sourced during execution of ~:OrgExecute~ and
+~:OrgTangle~, so packages you install there that provide extra babel
+languages will be available!
+
+Follow the package's installation steps, and if they tell you to include it in
+~org-babel-load-languages~, additionally make sure that you include it in
+~opts.langs~.
+
+**** Example
+
+As an example, lets add [[https://github.com/arnm/ob-mermaid][ob-mermaid]] for
+mermaid functionality in ~orgmode-babel.nvim~!
+
+First, lets create a =~/.emacs.d/init.el=.
+
+#+begin_src lisp init.el
+; ~/.emacs.d/init.el
+
+; Add the melpa package manager
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+; Install ob-mermaid
+(unless (package-installed-p 'ob-mermaid)
+  (package-install 'ob-mermaid))
+#+end_src
+
+Then, in our plugin configuration, we can add ~mermaid~ to our ~opts.langs~.
+
+#+begin_src lua
+{
+  "mrshmllow/orgmode-babel.nvim",
+  ...
+  opts = {
+    langs = { ..., "mermaid" }
+  }
+},
+#+end_src
