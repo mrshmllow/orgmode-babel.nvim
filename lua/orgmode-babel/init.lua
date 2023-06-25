@@ -156,6 +156,7 @@ vim.api.nvim_create_user_command("OrgExecute", function(el)
 	local parameters = {}
 
 	local blocks = M.get_blocks_in_buffer(0, line1, line2)
+	local named_blocks = M.get_names_in_buffer(0, line1, line2)
 
 	if #blocks <= 0 then
 		vim.notify("No blocks", vim.log.levels.INFO)
@@ -163,6 +164,10 @@ vim.api.nvim_create_user_command("OrgExecute", function(el)
 	end
 
 	if arg ~= "" then
+		if not vim.list_contains(named_blocks, arg) then
+			return vim.notify("Block not found (" .. arg .. ")", vim.log.levels.ERROR)
+		end
+
 		if el.bang then
 			vim.notify("Evaulating code block (" .. arg .. ") on your system", vim.log.levels.INFO)
 		elseif
@@ -184,7 +189,6 @@ vim.api.nvim_create_user_command("OrgExecute", function(el)
 		end
 	elseif range == 1 then
 		script = M._run_by_number
-		local named_blocks = M.get_names_in_buffer(0, line1, line2)
 
 		if #blocks > 1 then
 			vim.notify("Bailing on multiple blocks with single line range ?? (Report upstream)", vim.log.level.ERROR)
