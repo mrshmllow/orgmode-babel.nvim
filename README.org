@@ -38,51 +38,35 @@ you to add anything extra to your ~init.el~.
 
 All commands accept a ~!~ to skip confirmation.
 
-*** ~:OrgExecute~
+*** ~:OrgE[xecute]~
+
+Evaluates every block in buffer.
 
 See [[https://orgmode.org/manual/Working-with-Source-Code.html][Working with
     Source Code]] in the org manual.
 
-#+begin_src
-:OrgE[xecute]
-#+end_src
-
-Evaluates every block in buffer.
-
-#+begin_src
-:{range}OrgE[xecute]
-#+end_src
+*** ~:{range}OrgE[xecute]~
 
 Evaluate every block in range.
 
-#+begin_src
-:OrgE[xecute] [name]
-#+end_src
+*** ~:OrgE[xecute] [name]~
 
 Evaluate ~[name]~ block.
 
-*** ~:OrgTangle~
+*** ~:OrgT[angle]~
+
+Tangles whole file.
 
 See [[https://orgmode.org/manual/Extracting-Source-Code.html][Extracting Source
     Code]] in the org manual.
 
-#+begin_src
-:OrgT[angle]
-#+end_src
-
-Tangles whole file.
-
-#+begin_src
-:{range}OrgT[angle]
-#+end_src
+*** ~:{range}OrgT[angle]~
 
 Tangles all blocks in range. If the range is NOT ~%~, the tangled file will
 likely only contain the contents of the last block, which is expected
 behaviour.
 
-#+begin_src
-:OrgT[angle] [name]
-#+end_src
+*** ~:OrgT[angle] [name]~
 
 Tangles ~[name]~ block.
 
