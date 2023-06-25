@@ -104,7 +104,7 @@ mermaid functionality in ~orgmode-babel.nvim~!
 
 First, lets create a =~/.emacs.d/init.el=.
 
-#+begin_src lisp init.el
+#+begin_src emacs-lisp init.el
 ; ~/.emacs.d/init.el
 
 ; Add the melpa package manager
