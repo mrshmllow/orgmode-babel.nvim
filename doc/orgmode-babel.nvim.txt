@@ -90,11 +90,6 @@ likely only contain the contents of the last block, which is expected
 behaviour.
 
 
-:ORGT[ANGLE] [NAME] ~
-
-Tangles `[name]` block.
-
-
 ADVANCED CONFIGURATION*orgmode-babel.nvim-orgmode-babel.nvim-advanced-configuration*
 
 
