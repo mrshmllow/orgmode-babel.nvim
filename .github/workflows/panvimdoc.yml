@@ -5,6 +5,10 @@ on: [push]
 jobs:
   docs:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     name: pandoc to vimdoc
     steps:
       - uses: actions/checkout@v2
