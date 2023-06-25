@@ -12,7 +12,6 @@ function M.setup(opts)
 	M._run_by_number = M._here .. "/run_by_number.el"
 	M._run_all = M._here .. "/run_all.el"
 
-	M._tangle_by_name = M._here .. "/tangle_by_name.el"
 	M._tangle_all = M._here .. "/tangle_all.el"
 	M._tangle_by_number = M._here .. "/tangle_by_number.el"
 

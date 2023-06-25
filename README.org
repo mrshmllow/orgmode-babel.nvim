@@ -67,10 +67,6 @@ Tangles all blocks in range. If the range is NOT ~%~, the tangled file will
 likely only contain the contents of the last block, which is expected
 behaviour.
 
-*** ~:OrgT[angle] [name]~
-
-Tangles ~[name]~ block.
-
 ** Advanced Configuration
 *** Adding extra org-mode languages
  
