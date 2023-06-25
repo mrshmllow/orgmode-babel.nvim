@@ -17,7 +17,7 @@ jobs:
           vimdoc: orgmode-babel.nvim
           # The following are all optional
           pandoc: "README.md"
-          version: "NVIM v0.10.0"
+          version: "NVIM v0.9.0"
           toc: true
           treesitter: true
       - uses: stefanzweifel/git-auto-commit-action@v4

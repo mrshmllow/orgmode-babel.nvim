@@ -248,9 +248,9 @@ vim.api.nvim_create_user_command("OrgExecute", function(el)
 
 	-- vim.notify(cmd, vim.log.levels.DEBUG)
 
-	local ouput = vim.system(cmd):wait()
+	local output = vim.fn.system(cmd)
 
-	vim.print(ouput.stdout, ouput.stderr)
+	vim.print(output)
 
 	if not vim.bo[bufnr].modified then
 		vim.cmd(bufnr .. "bufdo edit")
@@ -350,9 +350,9 @@ vim.api.nvim_create_user_command("OrgTangle", function(el)
 
 	-- vim.notify(cmd, vim.log.levels.DEBUG)
 
-	local ouput = vim.system(cmd):wait()
+	local output = vim.fn.system(cmd)
 
-	vim.print(ouput.stdout, ouput.stderr)
+	vim.print(output)
 end, {
 	range = "%",
 	bang = true,
