@@ -1,4 +1,4 @@
-*orgmode-babel.nvim.txt*       For NVIM v0.9.0       Last change: 2023 June 25
+*orgmode-babel.nvim.txt*       For NVIM v0.9.0       Last change: 2023 June 27
 
 ==============================================================================
 Table of Contents                       *orgmode-babel.nvim-table-of-contents*
@@ -12,8 +12,8 @@ Table of Contents                       *orgmode-babel.nvim-table-of-contents*
 ==============================================================================
 1. orgmode-babel.nvim                  *orgmode-babel.nvim-orgmode-babel.nvim*
 
-An experimental plugin that evaluates and tangles code blocks in nvim-orgmode
-<https://github.com/nvim-orgmode/orgmode> using babel
+An **experimental** plugin that evaluates and tangles code blocks in
+nvim-orgmode <https://github.com/nvim-orgmode/orgmode> using babel
 <https://orgmode.org/worg/org-contrib/babel/> itself.
 
 It uses `emacs` under the hood for perfect compatibility, but does not require
