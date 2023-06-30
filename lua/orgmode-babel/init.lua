@@ -6,6 +6,7 @@ function M.setup(opts)
 	opts = opts or opts
 
 	M.langs = opts.langs and opts.langs or {}
+	M.load_paths = opts.load_paths and opts.load_paths or {}
 
 	M._here = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
 	M._run_by_name = M._here .. "/run_by_name.el"
@@ -25,6 +26,17 @@ function M.setup(opts)
 		"--eval",
 		"(setq make-backup-files nil)",
 	}
+
+	vim.list_extend(
+		M._base_cmd,
+		vim.fn.reduce(M.load_paths, function(acc, value)
+			vim.list_extend(acc, {
+				"--eval",
+				[[(add-to-list 'load-path "]] .. value .. [[")]],
+			})
+			return acc
+		end, {})
+	)
 
 	vim.list_extend(M._base_cmd, {
 		"--eval",
