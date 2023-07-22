@@ -3,7 +3,7 @@ local M = {
 }
 
 function M.setup(opts)
-	opts = opts or opts
+	opts = opts or {}
 
 	M.langs = opts.langs and opts.langs or {}
 	M.load_paths = opts.load_paths and opts.load_paths or {}
