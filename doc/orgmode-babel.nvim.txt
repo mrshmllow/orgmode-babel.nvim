@@ -1,4 +1,4 @@
-*orgmode-babel.nvim.txt*       For NVIM v0.9.0       Last change: 2023 July 22
+*orgmode-babel.nvim.txt*       For NVIM v0.9.0       Last change: 2023 July 23
 
 ==============================================================================
 Table of Contents                       *orgmode-babel.nvim-table-of-contents*
@@ -46,7 +46,7 @@ LAZY.NVIM ~
       cmd = { "OrgExecute", "OrgTangle" },
       opts = {
         -- by default, none are enabled
-        langs = { "python", "lua", ... }
+        langs = { "python", "lua", ... },
     
         -- paths to emacs packages to additionally load
         load_paths = {}
@@ -69,7 +69,7 @@ PACKER ~
       config = function ()
         require("orgmode-babel").setup({
           -- by default, none are enabled
-          langs = { "python", "lua", ... }
+          langs = { "python", "lua", ... },
     
           -- paths to emacs packages to additionally load
           load_paths = {}
